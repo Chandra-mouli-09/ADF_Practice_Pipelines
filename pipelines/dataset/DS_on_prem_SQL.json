@@ -1,0 +1,23 @@
+{
+	"name": "DS_on_prem_SQL",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Sql_server_on_prem",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"Sql_Table_name": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"table": {
+				"value": "@dataset().Sql_Table_name",
+				"type": "Expression"
+			}
+		}
+	}
+}
