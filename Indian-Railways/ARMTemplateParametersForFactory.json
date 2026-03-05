@@ -1,0 +1,63 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "Indian-Railways"
+		},
+		"LS_Azure_Sql_Database_password": {
+			"value": ""
+		},
+		"LS_Blob_new_connectionString": {
+			"value": ""
+		},
+		"Ls_Blob_indian_railways_dynamic_connectionString": {
+			"value": "DefaultEndpointsProtocol=https;AccountName=@{linkedService().Blob_Name};EndpointSuffix=core.windows.net;"
+		},
+		"Ls_blob_indian_railways_connectionString": {
+			"value": ""
+		},
+		"datalake_indian_railways_accountKey": {
+			"value": ""
+		},
+		"LS_Sql_server_on_prem_password": {
+			"value": ""
+		},
+		"LS_Azure_Sql_Database_properties_typeProperties_server": {
+			"value": "sqlserver0911.database.windows.net"
+		},
+		"LS_Azure_Sql_Database_properties_typeProperties_database": {
+			"value": "indian-railways"
+		},
+		"LS_Azure_Sql_Database_properties_typeProperties_userName": {
+			"value": "chandra"
+		},
+		"Ls_Datalake_indian_railways_dynamic_properties_typeProperties_url": {
+			"value": "@{linkedService().Datalake_URL}"
+		},
+		"Ls_india_railways_KeyVault_properties_typeProperties_baseUrl": {
+			"value": "https://Indian-railways-keyvault.vault.azure.net/"
+		},
+		"datalake_indian_railways_properties_typeProperties_url": {
+			"value": "https://datalakeindianrailways.dfs.core.windows.net/"
+		},
+		"Event_trigger_properties_typeProperties_scope": {
+			"value": "/subscriptions/90a98c4c-9b75-4066-b635-bfaed585300a/resourceGroups/Indian_railways_resource_group/providers/Microsoft.Storage/storageAccounts/blobindiarrailways"
+		},
+		"tumbling trigger_properties_pipeline_parameters_PL_Startdate": {
+			"value": "@trigger().outputs.windowstarttime"
+		},
+		"tumbling trigger_properties_pipeline_parameters_PL_Enddate": {
+			"value": "@trigger().outputs.windowEndtime"
+		},
+		"LS_Sql_server_on_prem_properties_typeProperties_server": {
+			"value": ".\\DATA_ENGINEER_09"
+		},
+		"LS_Sql_server_on_prem_properties_typeProperties_database": {
+			"value": "school"
+		},
+		"LS_Sql_server_on_prem_properties_typeProperties_userName": {
+			"value": "newuser"
+		}
+	}
+}
