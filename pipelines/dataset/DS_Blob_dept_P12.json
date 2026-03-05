@@ -1,0 +1,33 @@
+{
+	"name": "DS_Blob_dept_P12",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Blob_new",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "DEPT_Details.txt",
+				"container": "train-data-new"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Dept_id",
+				"type": "String"
+			},
+			{
+				"name": "Dept_Name",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

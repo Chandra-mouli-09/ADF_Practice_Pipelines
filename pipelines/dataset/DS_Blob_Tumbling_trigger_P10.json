@@ -1,0 +1,23 @@
+{
+	"name": "DS_Blob_Tumbling_trigger_P10",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Ls_blob_indian_railways",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "train-mfg"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

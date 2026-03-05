@@ -1,0 +1,40 @@
+{
+	"name": "Ds_datalake_copydata_dynamically_P2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "datalake_indian_railways",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"Ds_DL_Param_Folder_Name": {
+				"type": "string",
+				"defaultValue": "ssss"
+			},
+			"Ds_DL_Param_File_Name": {
+				"type": "string",
+				"defaultValue": "qqq"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().Ds_DL_Param_File_Name",
+					"type": "Expression"
+				},
+				"fileSystem": {
+					"value": "@dataset().Ds_DL_Param_Folder_Name",
+					"type": "Expression"
+				}
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

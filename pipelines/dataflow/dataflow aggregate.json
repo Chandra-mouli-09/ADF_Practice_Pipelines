@@ -1,0 +1,75 @@
+{
+	"name": "dataflow aggregate",
+	"properties": {
+		"description": "store the data by applying aggregate functions",
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DS_blob_aggregate_P15",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DS_DL_aggregate_P15",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "select1"
+				},
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "aggregate1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          {emp-id} as integer,",
+				"          {emp-name} as string,",
+				"          salary as integer,",
+				"          city as string,",
+				"          country as string,",
+				"          email as string,",
+				"          phone as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source1 select(mapColumn(",
+				"          {emp-id},",
+				"          {emp-name},",
+				"          salary,",
+				"          city,",
+				"          country",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 derive({emp-name} = iif(isNull({emp-name}), 'unknown', {emp-name})) ~> derivedColumn1",
+				"derivedColumn1 aggregate(groupBy(country),",
+				"     total_salary = sum(salary),",
+				"          average_salary = avg(salary),",
+				"          min_salary = min(salary),",
+				"          max_salary = max(salary),",
+				"          emp_count = count({emp-id})) ~> aggregate1",
+				"aggregate1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
+			]
+		}
+	}
+}

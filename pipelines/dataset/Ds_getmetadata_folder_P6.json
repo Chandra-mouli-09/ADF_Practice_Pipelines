@@ -1,0 +1,28 @@
+{
+	"name": "Ds_getmetadata_folder_P6",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Ls_Blob_indian_railways_dynamic",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"Blob_Name": "blobindianrailwaysnew",
+				"Blob_Key_name": "KV-blob-indian-railways-new",
+				"Secret_version": "91e2463185da493faa5ee3dbec1a21de"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "contacts-data"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

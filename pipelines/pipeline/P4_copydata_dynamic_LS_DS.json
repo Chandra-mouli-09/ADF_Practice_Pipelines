@@ -1,0 +1,76 @@
+{
+	"name": "P4_copydata_dynamic_LS_DS",
+	"properties": {
+		"description": "Copying data using linked service and dataset dynamically",
+		"activities": [
+			{
+				"name": "Copy data dynamic",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Ds_blob_copydata_dynamic_P4",
+						"type": "DatasetReference",
+						"parameters": {
+							"Ds_param_src_foldername": "train-data-new"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Ds_DL_copydata_dynamic",
+						"type": "DatasetReference",
+						"parameters": {
+							"Ds_sink_param_foldername": "train-data-new",
+							"Ds_sink_param_filename": "train-details.csv"
+						}
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2026-02-10T13:33:02Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,35 @@
+{
+	"name": "P13_dataflow_union_datasets",
+	"properties": {
+		"description": "storing the data by using union for two datasets.",
+		"activities": [
+			{
+				"name": "union dataflow",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "union dataflow",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2026-03-02T10:39:07Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,44 @@
+{
+	"name": "Ds_DL_copydata_dynamic",
+	"properties": {
+		"description": "Dataset for datalake for copydata activity dynamically",
+		"linkedServiceName": {
+			"referenceName": "Ls_Datalake_indian_railways_dynamic",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"Datalake_URL": "https://datalakeindiarailwaysnew.dfs.core.windows.net/",
+				"Datalake_secret_name": "KV-datalake-indian-railways-new",
+				"Secret_version": "12b582ba2b09486f821f1fa40eaa757e"
+			}
+		},
+		"parameters": {
+			"Ds_sink_param_foldername": {
+				"type": "string"
+			},
+			"Ds_sink_param_filename": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().Ds_sink_param_filename",
+					"type": "Expression"
+				},
+				"fileSystem": {
+					"value": "@dataset().Ds_sink_param_foldername",
+					"type": "Expression"
+				}
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

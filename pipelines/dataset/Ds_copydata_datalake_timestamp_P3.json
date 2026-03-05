@@ -1,0 +1,45 @@
+{
+	"name": "Ds_copydata_datalake_timestamp_P3",
+	"properties": {
+		"description": "Dataset for datalake for P3 pipeline (timestamp)",
+		"linkedServiceName": {
+			"referenceName": "datalake_indian_railways",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"Ds_DL_param_Foldername": {
+				"type": "string",
+				"defaultValue": "sss"
+			},
+			"Ds_DL_param_Filename": {
+				"type": "string",
+				"defaultValue": "ddd"
+			},
+			"Ds_DL_param_File_Extension": {
+				"type": "string",
+				"defaultValue": ".csv"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@concat(dataset().Ds_DL_param_Filename,\n'-',\nutcNow(),\ndataset().Ds_DL_param_File_Extension)",
+					"type": "Expression"
+				},
+				"fileSystem": {
+					"value": "@dataset().Ds_DL_param_Foldername",
+					"type": "Expression"
+				}
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

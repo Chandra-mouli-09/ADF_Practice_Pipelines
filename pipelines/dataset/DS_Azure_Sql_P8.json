@@ -1,0 +1,27 @@
+{
+	"name": "DS_Azure_Sql_P8",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Azure_Sql_Database",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "zone_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "zone_name",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "zone_details"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

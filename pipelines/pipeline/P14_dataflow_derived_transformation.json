@@ -1,0 +1,35 @@
+{
+	"name": "P14_dataflow_derived_transformation",
+	"properties": {
+		"description": "store the data by applying derived transformation using dataflow.",
+		"activities": [
+			{
+				"name": "Data flow derived",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "derived dataflow",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2026-03-02T12:03:17Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

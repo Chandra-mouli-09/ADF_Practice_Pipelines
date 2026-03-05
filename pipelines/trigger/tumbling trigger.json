@@ -1,0 +1,30 @@
+{
+	"name": "tumbling trigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipeline": {
+			"pipelineReference": {
+				"referenceName": "P10_tumbling_trigger_coy_sql_blob",
+				"type": "PipelineReference"
+			},
+			"parameters": {
+				"PL_Startdate": "@trigger().outputs.windowstarttime",
+				"PL_Enddate": "@trigger().outputs.windowEndtime"
+			}
+		},
+		"type": "TumblingWindowTrigger",
+		"typeProperties": {
+			"frequency": "Hour",
+			"interval": 24,
+			"startTime": "2026-02-01T00:00:00Z",
+			"endTime": "2026-02-03T23:59:00Z",
+			"delay": "00:00:00",
+			"maxConcurrency": 50,
+			"retryPolicy": {
+				"intervalInSeconds": 30
+			},
+			"dependsOn": []
+		}
+	}
+}

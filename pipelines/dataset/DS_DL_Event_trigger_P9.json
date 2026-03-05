@@ -1,0 +1,19 @@
+{
+	"name": "DS_DL_Event_trigger_P9",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "datalake_indian_railways",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "railway-details"
+			}
+		},
+		"schema": {}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

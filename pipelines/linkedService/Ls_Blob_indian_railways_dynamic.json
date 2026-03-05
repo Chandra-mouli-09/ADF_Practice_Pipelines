@@ -1,0 +1,41 @@
+{
+	"name": "Ls_Blob_indian_railways_dynamic",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"description": "Dynamic linked service for blob",
+		"parameters": {
+			"Blob_Name": {
+				"type": "string",
+				"defaultValue": "aaa"
+			},
+			"Blob_Key_name": {
+				"type": "string",
+				"defaultValue": "bbb"
+			},
+			"Secret_version": {
+				"type": "string",
+				"defaultValue": "ccc"
+			}
+		},
+		"annotations": [],
+		"type": "AzureBlobStorage",
+		"typeProperties": {
+			"connectionString": "DefaultEndpointsProtocol=https;AccountName=@{linkedService().Blob_Name};EndpointSuffix=core.windows.net;",
+			"accountKey": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "Ls_india_railways_KeyVault",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": {
+					"value": "@linkedService().Blob_Key_name",
+					"type": "Expression"
+				},
+				"secretVersion": {
+					"value": "@linkedService().Secret_version",
+					"type": "Expression"
+				}
+			}
+		}
+	}
+}

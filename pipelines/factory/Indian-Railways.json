@@ -1,0 +1,9 @@
+{
+	"name": "Indian-Railways",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "e4c3feb2-4dcd-4663-ae22-8ba3670e2a28",
+		"tenantId": "5609e0dd-5b5f-4372-b093-6ea8bf5c138c"
+	}
+}

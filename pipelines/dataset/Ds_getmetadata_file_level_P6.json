@@ -1,0 +1,43 @@
+{
+	"name": "Ds_getmetadata_file_level_P6",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Ls_Blob_indian_railways_dynamic",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"Blob_Name": "blobindianrailwaysnew",
+				"Blob_Key_name": "KV-blob-indian-railways-new",
+				"Secret_version": "91e2463185da493faa5ee3dbec1a21de"
+			}
+		},
+		"parameters": {
+			"Ds_param_src_foldername": {
+				"type": "string"
+			},
+			"Ds_param_src_filename": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().Ds_param_src_filename",
+					"type": "Expression"
+				},
+				"container": {
+					"value": "@dataset().Ds_param_src_foldername",
+					"type": "Expression"
+				}
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,78 @@
+{
+	"name": "P3_copydata_adding_timestamp_at_sink",
+	"properties": {
+		"description": "Copying the data from blob to datalake and adding timestamp to the file at sink.",
+		"activities": [
+			{
+				"name": "Adding-timestamp",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Ds_copydata_blob_timestamp_P3",
+						"type": "DatasetReference",
+						"parameters": {
+							"Ds_src_param_Foldername": "train-mfg",
+							"Ds_src_param_Filename": "Zone details.csv"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Ds_copydata_datalake_timestamp_P3",
+						"type": "DatasetReference",
+						"parameters": {
+							"Ds_DL_param_Foldername": "mfg-details",
+							"Ds_DL_param_Filename": "Zone-Details",
+							"Ds_DL_param_File_Extension": ".csv"
+						}
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2026-02-09T11:00:39Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

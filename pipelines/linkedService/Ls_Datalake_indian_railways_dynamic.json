@@ -1,0 +1,41 @@
+{
+	"name": "Ls_Datalake_indian_railways_dynamic",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"description": "Dynamic Linked service for datalake ",
+		"parameters": {
+			"Datalake_URL": {
+				"type": "string",
+				"defaultValue": "aaa"
+			},
+			"Datalake_secret_name": {
+				"type": "string",
+				"defaultValue": "bbb"
+			},
+			"Secret_version": {
+				"type": "string",
+				"defaultValue": "dsse"
+			}
+		},
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "@{linkedService().Datalake_URL}",
+			"accountKey": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "Ls_india_railways_KeyVault",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": {
+					"value": "@linkedService().Datalake_secret_name",
+					"type": "Expression"
+				},
+				"secretVersion": {
+					"value": "@linkedService().Secret_version",
+					"type": "Expression"
+				}
+			}
+		}
+	}
+}

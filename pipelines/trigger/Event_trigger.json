@@ -1,0 +1,24 @@
+{
+	"name": "Event_trigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "P9_Event_based_trigger",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/railways-data/blobs/",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/90a98c4c-9b75-4066-b635-bfaed585300a/resourceGroups/Indian_railways_resource_group/providers/Microsoft.Storage/storageAccounts/blobindiarrailways",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}
