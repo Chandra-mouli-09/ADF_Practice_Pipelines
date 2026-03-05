@@ -1,0 +1,22 @@
+{
+	"name": "LS_Sql_server_on_prem",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"description": "Linked service for on pre, sql server",
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"server": ".\\DATA_ENGINEER_09",
+			"database": "school",
+			"encrypt": "mandatory",
+			"trustServerCertificate": true,
+			"authenticationType": "SQL",
+			"userName": "newuser",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIyZGNhMGU0OC0xZjIyLTRjOGItODg4Mi05NWIzYWFjMzgxYWIiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "self-hosted-IR",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
