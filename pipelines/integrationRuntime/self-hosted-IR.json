@@ -2,6 +2,9 @@
 	"name": "self-hosted-IR",
 	"properties": {
 		"type": "SelfHosted",
-		"description": "Self hosted integration runtime for on-prem sql server"
+		"description": "Self hosted integration runtime for on-prem sql server",
+		"typeProperties": {
+			"selfContainedInteractiveAuthoringEnabled": true
+		}
 	}
 }
