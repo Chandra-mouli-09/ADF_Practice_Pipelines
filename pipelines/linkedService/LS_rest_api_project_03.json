@@ -5,7 +5,7 @@
 		"annotations": [],
 		"type": "RestService",
 		"typeProperties": {
-			"url": "https://restcountries.com/v3.1/name/peru",
+			"url": "https://restcountries.com/v3.1/all?fields=name,capital,currencies",
 			"enableServerCertificateValidation": true,
 			"authenticationType": "Anonymous"
 		}
