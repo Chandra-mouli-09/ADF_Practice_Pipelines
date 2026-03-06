@@ -23,8 +23,15 @@
 					},
 					"sink": {
 						"type": "AzureSqlSink",
-						"writeBehavior": "insert",
-						"sqlWriterUseTableLock": false
+						"writeBehavior": "upsert",
+						"upsertSettings": {
+							"useTempDB": true,
+							"keys": [
+								"studentid"
+							]
+						},
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
 					"translator": {
@@ -112,7 +119,7 @@
 			}
 		},
 		"annotations": [],
-		"lastPublishTime": "2026-03-05T12:08:03Z"
+		"lastPublishTime": "2026-03-05T16:20:43Z"
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }
