@@ -4,7 +4,7 @@
 		"type": "SelfHosted",
 		"description": "Self hosted integration runtime for on-prem sql server",
 		"typeProperties": {
-			"selfContainedInteractiveAuthoringEnabled": true
+			"selfContainedInteractiveAuthoringEnabled": false
 		}
 	}
 }
