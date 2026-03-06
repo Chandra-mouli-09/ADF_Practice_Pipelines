@@ -1,0 +1,12 @@
+{
+	"name": "DS_rest_api_project_03",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_rest_api_project_03",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"schema": []
+	}
+}
