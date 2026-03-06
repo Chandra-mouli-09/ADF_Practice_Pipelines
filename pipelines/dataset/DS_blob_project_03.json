@@ -1,0 +1,22 @@
+{
+	"name": "DS_blob_project_03",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Ls_blob_indian_railways",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "input"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

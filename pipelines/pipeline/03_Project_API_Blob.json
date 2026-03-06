@@ -1,0 +1,90 @@
+{
+	"name": "03_Project_API_Blob",
+	"properties": {
+		"description": "Pipeline to transfer data from rest api to blob",
+		"activities": [
+			{
+				"name": "Copy data API to Blob",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:01:40",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".csv"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['name']['common']"
+								},
+								"sink": {
+									"name": "name_common",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['name']['official']"
+								},
+								"sink": {
+									"name": "name_official",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['capital'][0]"
+								},
+								"sink": {
+									"name": "items",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": "$['capital']"
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_rest_api_project_03",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_blob_project_03",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}
